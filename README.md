@@ -1,5 +1,5 @@
 
-  # LA IA Y YO
+  # LA IA Y YO . Beltrán Rueda Cruz para la UOC
 
   ## Running the code
 
