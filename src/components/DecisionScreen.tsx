@@ -15,6 +15,7 @@ interface DecisionScreenProps {
   dialogue: string;
   choices: Choice[];
   backgroundImage: string;
+  aiaVideoUrl?: string; // NUEVO
   onChoice: (choiceId: number) => void;
   onBack?: () => void;
   canGoBack?: boolean;
@@ -26,6 +27,7 @@ export function DecisionScreen({
   dialogue,
   choices,
   backgroundImage,
+  aiaVideoUrl,
   onChoice,
   onBack,
   canGoBack = false
@@ -107,11 +109,24 @@ export function DecisionScreen({
                   <div className="absolute inset-0 border-2 sm:border-3 md:border-4 border-[#D4A574] shadow-2xl" style={{
                     clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
                   }}>
-                    <img
-                      src={aiaImage}
-                      alt="AIA"
-                      className="w-full h-full object-cover"
-                    />
+                    {aiaVideoUrl ? (
+					  <video
+						key={aiaVideoUrl}        // cambia al cambiar de escena
+						src={aiaVideoUrl}
+						autoPlay
+						loop
+						muted
+						playsInline
+						preload="auto"
+						className="w-full h-full object-cover"
+					  />
+					) : (
+					  <img
+						src={aiaImage}
+						alt="AIA"
+						className="w-full h-full object-cover"
+					  />
+					)}
                   </div>
                   {/* Indicador de actividad responsive */}
                   <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-[#98D8C8] border-2 border-[#0F1E3A] animate-pulse shadow-lg" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />

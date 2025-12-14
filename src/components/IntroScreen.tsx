@@ -50,7 +50,7 @@ export function IntroScreen({ onContinue }: IntroScreenProps) {
                 clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
               }}>
                 <video
-				  src="/recursos/videos/presentacion.mp4"
+				  src="/recursos/videos/video1.mp4"
 				  className="w-full h-full object-cover"
 				  style={{
 					clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)',
