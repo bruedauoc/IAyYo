@@ -23,6 +23,7 @@ interface StoryScene {
     ending?: EndingType;
   }>;
   backgroundImage: string;
+  aiaVideoUrl?: string; //  NUEVO (opcional)
   voiceUrl: string; // URL del audio de narración
 }
 
@@ -37,6 +38,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Empezar solo y pedirle ayuda solo si me atasco en algo específico.", nextScene: 4 }
     ],
     backgroundImage: "/recursos/fondos/fondo1.jfif",
+	aiaVideoUrl: "/recursos/videos/presentacion.mp4",
     voiceUrl: "/recursos/voces/Escena1.mp3"
   },
   2: {
@@ -48,6 +50,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 2, text: "Tienes razón. Úsalo como guía pero lo reescribiré con mis palabras.", nextScene: 5 }
     ],
     backgroundImage: "/recursos/fondos/fondo2.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion1.mp4",
     voiceUrl: "/recursos/voces/Escena2.mp3"
   },
   3: {
@@ -60,6 +63,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Le pregunto a AIA de dónde sacó la información y busco esas fuentes.", nextScene: 5 }
     ],
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion3.mp4",
     voiceUrl: "/recursos/voces/Escena3.mp3"
   },
   4: {
@@ -72,6 +76,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Dame los gráficos para copiarlos rápido. Ya perdí mucho tiempo.", nextScene: 2 }
     ],
     backgroundImage: "/recursos/fondos/fondo1.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion4.mp4",
     voiceUrl: "/recursos/voces/Escena4.mp3"
   },
   5: {
@@ -84,6 +89,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Combino ambas: fotos reales para datos y visualizaciones de IA para conceptos abstractos.", ending: "responsable" }
     ],
     backgroundImage: "/recursos/fondos/fondo2.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion1.mp4",
     voiceUrl: "/recursos/voces/Escena5.mp3"
   },
   6: {
@@ -96,6 +102,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Genero el ensayo para él. Total, es solo esta vez y es mi amigo.", ending: "dependiente" }
     ],
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/presentacion.mp4",
     voiceUrl: "/recursos/voces/Escena6.mp3"
   },
   7: {
@@ -108,6 +115,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Investigo más sobre los autores y metodología de cada estudio antes de decidir.", nextScene: 6 }
     ],
     backgroundImage: "/recursos/fondos/fondo1.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion4.mp4",
     voiceUrl: "/recursos/voces/Escena7.mp3"
   },
   8: {
@@ -120,6 +128,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Uso el dato correcto pero no le digo a nadie que AIA se equivocó.", nextScene: 6 }
     ],
     backgroundImage: "/recursos/fondos/fondo2.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion1.mp4",
     voiceUrl: "/recursos/voces/Escena8.mp3"
   },
   9: {
@@ -132,6 +141,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Ignoro las sugerencias y escribo todo completamente solo.", ending: "critico" }
     ],
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/presentacion.mp4",
     voiceUrl: "/recursos/voces/Escena9.mp3"
   },
   10: {
@@ -144,6 +154,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "Uso la imagen pero añado una nota explicando que es representativa, no literal.", nextScene: 6 }
     ],
     backgroundImage: "/recursos/fondos/fondo1.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion4.mp4",
     voiceUrl: "/recursos/voces/Escena10.mp3"
   },
   11: {
@@ -156,6 +167,7 @@ const storyScenes: Record<number, StoryScene> = {
       { id: 3, text: "No digo nada. Ya hice suficiente ayudándolo a usar la IA.", ending: "dependiente" }
     ],
     backgroundImage: "/recursos/fondos/fondo2.jfif",
+	aiaVideoUrl: "/recursos/videos/explicacion1.mp4",
     voiceUrl: "/recursos/voces/Escena11.mp3"
   }
 };
@@ -293,6 +305,7 @@ export default function App() {
           dialogue={currentScene.dialogue}
           choices={currentScene.choices}
           backgroundImage={currentScene.backgroundImage}
+		  aiaVideoUrl={currentScene.aiaVideoUrl} // AQUÍ
           onChoice={handleChoice}
           onBack={handleBack}
           canGoBack={sceneHistory.length > 1}
