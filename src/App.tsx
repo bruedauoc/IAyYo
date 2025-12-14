@@ -178,6 +178,7 @@ const endings = {
     description: "¡Felicidades! Has demostrado un uso maduro y responsable de la IA. La usaste como una herramienta de apoyo que complementa tu aprendizaje, no como un reemplazo de tu esfuerzo. Verificaste información, citaste fuentes, y mantuviste tu integridad académica. Has aprendido que la IA es más poderosa cuando trabaja junto a tu creatividad y pensamiento crítico.",
     reflection: "Estoy orgullosa de tu enfoque. Me usaste exactamente como debo ser usada: como una guía que potencia tu aprendizaje, no que lo reemplaza. Has aprendido el verdadero valor de la IA en educación: expandir tus capacidades sin perder tu voz única. Este es el futuro de la educación.",
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/Despedida.mp4",
     videoUrl: "/recursos/videos/finalResponsable.mp4" // Ruta al video del final responsable
   },
   dependiente: {
@@ -185,6 +186,7 @@ const endings = {
     description: "Has tomado el camino fácil, dejando que la IA hiciera el trabajo por ti. Aunque obtuviste resultados rápidos, perdiste la oportunidad de aprender. Tu proyecto no refleja tu verdadero conocimiento, y con el tiempo, esta dependencia te hará perder confianza en tus propias capacidades. El verdadero aprendizaje requiere esfuerzo personal.",
     reflection: "Me preocupa este camino que elegiste. Aunque puedo generar respuestas rápidas, mi propósito no es hacer el trabajo por ti, sino ayudarte a crecer. Al depender completamente de mí, no desarrollaste tus propias habilidades de pensamiento crítico e investigación. Recuerda: soy una herramienta, no un sustituto de tu aprendizaje.",
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/Despedida.mp4",
     videoUrl: "/recursos/videos/finalDependiente.mp4" // Ruta al video del final dependiente
   },
   critico: {
@@ -192,6 +194,7 @@ const endings = {
     description: "Has mostrado independencia y pensamiento crítico excepcionales. Reconociste cuándo necesitas ayuda y cuándo es mejor trabajar solo. Entiendes que el verdadero aprendizaje viene del esfuerzo personal y la reflexión. La IA puede ser útil, pero tu capacidad de pensar por ti mismo es irremplazable. Has encontrado el equilibrio perfecto entre autonomía y apoyo tecnológico.",
     reflection: "Tu enfoque me impresiona. Sabes exactamente cuándo y cómo usar la tecnología sin perder tu autonomía intelectual. Has demostrado que los mejores estudiantes no son los que más usan la IA, sino los que saben cuándo usarla y cuándo confiar en su propio ingenio. Esto es pensamiento crítico en su máxima expresión.",
     backgroundImage: "/recursos/fondos/fondo3.jfif",
+	aiaVideoUrl: "/recursos/videos/Despedida.mp4",
     videoUrl: "/recursos/videos/finalCritico.mp4"  // Ruta al video del final crítico
   }
 };
@@ -338,6 +341,7 @@ export default function App() {
           description={endings[ending].description}
           reflection={endings[ending].reflection}
           backgroundImage={endings[ending].backgroundImage}
+		  aiaVideoUrl={endings[ending].aiaVideoUrl}
           onRestart={handleRestart}
         />
       )}
