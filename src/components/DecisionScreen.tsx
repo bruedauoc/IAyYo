@@ -32,7 +32,7 @@ export function DecisionScreen({
 }: DecisionScreenProps) {
   // Función para reproducir el sonido de clic
   const playChoiceSound = () => {
-    const audio = new Audio("/sounds/choice-click.mp3");
+    const audio = new Audio("/recursos/sfx/button-sfx-1.mp3");
     audio.volume = 0.6; // Volumen moderado
     audio.play().catch(error => {
       console.log("Error al reproducir sonido de clic:", error);
