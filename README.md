@@ -1,5 +1,5 @@
 
-  # LA IA Y YO . Beltrán Rueda Cruz para la UOC
+  # LA IA Y YO . Beltrán Rueda Cruz para la UOC. IA generativa para la creación multimedia
 
   ## Running the code
 
