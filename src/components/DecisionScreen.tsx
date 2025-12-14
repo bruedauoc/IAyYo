@@ -103,39 +103,62 @@ export function DecisionScreen({
               transition={{ delay: 0.4 }}
               className="flex flex-col sm:flex-row items-start gap-3 sm:gap-6 mb-4 sm:mb-6"
             >
-              <div className="relative flex-shrink-0 mx-auto sm:mx-0">
-                {/* Art Deco avatar frame - Responsive */}
-                <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 relative">
-                  <div className="absolute inset-0 border-2 sm:border-3 md:border-4 border-[#D4A574] shadow-2xl" style={{
-                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
-                  }}>
-                    {aiaVideoUrl ? (
-					  <video
-						key={aiaVideoUrl}        // cambia al cambiar de escena
-						src={aiaVideoUrl}
-						autoPlay
-						loop
-						muted
-						playsInline
-						preload="auto"
-						className="w-full h-full object-cover"
-					  />
-					) : (
-					  <img
-						src={aiaImage}
-						alt="AIA"
-						className="w-full h-full object-cover"
-					  />
-					)}
-                  </div>
-                  {/* Indicador de actividad responsive */}
-                  <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-[#98D8C8] border-2 border-[#0F1E3A] animate-pulse shadow-lg" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
-                  {/* Marco decorativo adicional responsive */}
-                  <div className="absolute -top-1 -left-1 sm:-top-2 sm:-left-2 w-6 h-6 sm:w-8 sm:h-8 border-t-2 sm:border-t-4 border-l-2 sm:border-l-4 border-[#98D8C8]" />
-                  <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 border-b-2 sm:border-b-4 border-r-2 sm:border-r-4 border-[#98D8C8]" />
-                </div>
-              </div>
-
+              {/* AIA Video Animation */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex justify-center mb-8"
+        >
+				  <div className="relative">
+					{/* Art Deco frame for AIA Video */}
+					<div className="relative w-80 h-80 md:w-96 md:h-96">
+					  <div className="absolute inset-0 border-3 border-[#D4A574]" style={{
+						clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
+					  }}>
+							{aiaVideoUrl ? (
+						  <video
+							key={aiaVideoUrl}        // cambia al cambiar de escena
+							src={aiaVideoUrl}
+							autoPlay
+							loop
+							muted
+							playsInline
+							preload="auto"
+							className="w-full h-full object-cover"
+						  />
+						) : (
+						  <img
+							src={aiaImage}
+							alt="AIA"
+							className="w-full h-full object-cover"
+						  />
+						)}
+					  </div>
+					  
+					  {/* Corner accents */}
+					  <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#98D8C8]" />
+					  <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#98D8C8]" />
+					  <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#98D8C8]" />
+					  <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#98D8C8]" />
+					</div>
+					
+					{/* Pulsing geometric shapes */}
+					<motion.div
+					  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+					  transition={{ duration: 2, repeat: Infinity }}
+					  className="absolute inset-0 border-2 border-[#D4A574]"
+					  style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)' }}
+					/>
+					<motion.div
+					  animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+					  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+					  className="absolute inset-0 border-2 border-[#98D8C8]"
+					  style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)' }}
+					/>
+				  </div>
+				</motion.div>
+			  
               {/* Dialogue Box */}
               <div className="flex-1 w-full bg-[#0F1E3A]/90 backdrop-blur-sm border-2 border-[#D4A574] p-4 sm:p-6 relative">
                 {/* Art Deco pointer - solo en desktop */}
@@ -163,7 +186,7 @@ export function DecisionScreen({
                 >
                   <Button
                     onClick={() => handleChoiceClick(choice.id)}
-                    className="w-full p-4 sm:p-6 bg-[#2C5F5F]/80 hover:bg-[#4A9B9B]/80 border-2 border-[#D4A574] hover:border-[#F5E6D3] text-left justify-start text-[#F5E6D3] backdrop-blur-sm shadow-lg relative group transition-all text-sm sm:text-base"
+                    className="w-full h-auto p-4 sm:p-6  bg-[#2C5F5F]/80 hover:bg-[#4A9B9B]/80  border-2 border-[#D4A574] hover:border-[#F5E6D3]  text-left justify-start items-start  text-[#F5E6D3] backdrop-blur-sm shadow-lg relative group transition-all  whitespace-normal break-words leading-snug  text-sm sm:text-base"
                   >
                     {/* Corner accents that appear on hover */}
                     <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-[#98D8C8] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -171,7 +194,7 @@ export function DecisionScreen({
                     <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-[#98D8C8] opacity-0 group-hover:opacity-100 transition-opacity" />
                     <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-[#98D8C8] opacity-0 group-hover:opacity-100 transition-opacity" />
                     
-                    <span className="text-[#D4A574] mr-2 sm:mr-3" style={{ fontFamily: 'var(--font-display)' }}>{index + 1}.</span>
+                    <span className="text-[#D4A574] mr-2 sm:mr-3 shrink-0" style={{ fontFamily: 'var(--font-display)' }}>{index + 1}.</span>
                     {choice.text}
                   </Button>
                 </motion.div>

@@ -9,6 +9,7 @@ interface EndingScreenProps {
   description: string;
   reflection: string;
   backgroundImage: string;
+  aiaVideoUrl?: string; // NUEVO
   onRestart: () => void;
 }
 
@@ -18,6 +19,7 @@ export function EndingScreen({
   description,
   reflection,
   backgroundImage,
+  aiaVideoUrl,
   onRestart
 }: EndingScreenProps) {
   const getEndingColor = () => {
@@ -156,21 +158,65 @@ export function EndingScreen({
             <p className="text-[#F5E6D3] text-lg mb-6 relative z-10">
               {description}
             </p>
+            {/* AIA Video Animation */}
+				<motion.div
+				  initial={{ x: -100, opacity: 0 }}
+				  animate={{ x: 0, opacity: 1 }}
+				  transition={{ duration: 0.8, delay: 0.2 }}
+				  className="flex justify-center mb-8"
+				>
+				  <div className="relative">
+					{/* Art Deco frame for AIA Video */}
+					<div className="relative w-80 h-80 md:w-96 md:h-96">
+					  <div className="absolute inset-0 border-3 border-[#D4A574]" style={{
+						clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
+					  }}>
+						{aiaVideoUrl ? (
+						  <video
+							key={aiaVideoUrl}        // cambia al cambiar de escena
+							src={aiaVideoUrl}
+							autoPlay
+							loop
+							muted
+							playsInline
+							preload="auto"
+							className="w-full h-full object-cover"
+						  />
+						) : (
+						  <img
+							src={aiaImage}
+							alt="AIA"
+							className="w-full h-full object-cover"
+						  />
+						)}
+					  </div>
+					  
+					  {/* Corner accents */}
+					  <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#98D8C8]" />
+					  <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#98D8C8]" />
+					  <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#98D8C8]" />
+					  <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#98D8C8]" />
+					</div>
+					
+					{/* Pulsing geometric shapes */}
+					<motion.div
+					  animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+					  transition={{ duration: 2, repeat: Infinity }}
+					  className="absolute inset-0 border-2 border-[#D4A574]"
+					  style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)' }}
+					/>
+					<motion.div
+					  animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+					  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+					  className="absolute inset-0 border-2 border-[#98D8C8]"
+					  style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)' }}
+					/>
+				  </div>
+				</motion.div>
             
-            {/* AIA's Reflection */}
+			{/* AIA's Reflection */}
             <div className="border-t-2 border-[#D4A574] pt-6 relative z-10">
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 relative flex-shrink-0">
-                  <div className="absolute inset-0 border-2 border-[#D4A574]" style={{
-                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)'
-                  }}>
-                    <img
-                      src={aiaImage}
-                      alt="AIA"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
                 <div className="flex-1">
                   <p className="text-[#E16B5A] mb-2" style={{ fontFamily: 'var(--font-display)' }}>Reflexión de AIA:</p>
                   <p className="text-[#F5E6D3] italic">"{reflection}"</p>
